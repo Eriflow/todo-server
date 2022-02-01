@@ -17,19 +17,18 @@ const todos = [
 
 let id = 3;
 
-
 /*
 * GET todos listing.
 */
 exports.findAll = function(_, res) {
-  res.json(200, todos);
+  res.status(200).json(todos);
 };
 
 /*
 * GET todo by identifier.
 */
 exports.findById = function(req, res) {
-  res.json(404, 'Not found');
+  res.status(404).json({ error: 'Not found' });
 };
 
 /*
@@ -43,7 +42,7 @@ exports.addTodo = function(req, res) {
 * Update a todo by its identifier.
 */
 exports.updateTodo = function(req, res) {
-  res.json(404, 'Not found');
+  res.status(404).json({ error: 'Not found' });
 };
 
 /*
