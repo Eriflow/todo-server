@@ -1,9 +1,9 @@
-const cors = require('cors');
-const express = require('express');
-const expressWinston = require('express-winston');
-const winston = require('winston');
+import cors from 'cors';
+import express from 'express';
+import expressWinston from 'express-winston';
+import winston from 'winston';
 
-const todo = require('./routes/todo');
+import * as todo from './routes/todo';
 
 const app = express();
 

@@ -1,4 +1,7 @@
-const todos = [
+import { Request, Response } from 'express';
+import { Todo } from '../models/todo.model';
+
+const todos: Todo[] = [
   {
     id: 1,
     description: 'Faire les courses',
@@ -20,35 +23,35 @@ let id = 3;
 /*
 * GET todos listing.
 */
-exports.findAll = function(_, res) {
+export const findAll = function(req: Request, res: Response) {
   res.status(200).json(todos);
 };
 
 /*
 * GET todo by identifier.
 */
-exports.findById = function(req, res) {
+export const findById = function(req: Request, res: Response) {
   res.status(404).json({ error: 'Not found' });
 };
 
 /*
 * Create a todo.
 */
-exports.addTodo = function(req, res) {
+export const addTodo = function(req: Request, res: Response) {
   res.status(201).end();
 };
 
 /*
 * Update a todo by its identifier.
 */
-exports.updateTodo = function(req, res) {
+export const updateTodo = function(req: Request, res: Response) {
   res.status(404).json({ error: 'Not found' });
 };
 
 /*
 * Delete a todo
 */
-exports.deleteTodo = function(req, res) {
+export const deleteTodo = function(req: Request, res: Response) {
   res.status(204).end();
   return;
 };
