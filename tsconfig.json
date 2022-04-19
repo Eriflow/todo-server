@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "./dist"
+  },
+  "include": ["src/todolist.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
