@@ -3,22 +3,7 @@ import { Request, Response } from 'express';
 import { Todo } from '../models/todo.model';
 import { persistToDisk, readFromDisk } from './file-storage';
 
-const todos: Todo[] = [
-  {
-    id: 1,
-    description: 'Faire les courses',
-    memo: 'Pomme, poire, lessive',
-    priority: 1,
-    updatedAt: Date.now(),
-  },
-  {
-    id: 2,
-    description: 'Envoyer le courrier',
-    memo: 'Urgent',
-    priority: 2,
-    updatedAt: Date.now(),
-  },
-];
+const todos: Todo[] = [];
 
 let id = 3;
 
@@ -35,7 +20,7 @@ export const findAll = async function(req: Request, res: Response) {
 */
 export const findById = async function(req: Request, res: Response) {
   await loadFromDisk();
-  res.status(404).json({ error: 'Not found' });
+  res.status(200).json(todos.find(todo => id = todo.id));
 };
 
 /*
@@ -43,7 +28,18 @@ export const findById = async function(req: Request, res: Response) {
 */
 export const addTodo = async function(req: Request, res: Response) {
   await loadFromDisk();
-  res.status(201).end();
+  let id = todos[todos.length-1].id
+  // update this code to be able to add a todo
+  todos.push(
+    {
+      id: id++,
+      description: 'Faire la vaisselle',
+      memo: '',
+      priority: 2,
+      updatedAt: Date.now(),
+    }
+  );
+  res.status(201).end(JSON.stringify(todos[todos.length -1]));
   await saveTodosToFile();
 };
 
@@ -52,8 +48,8 @@ export const addTodo = async function(req: Request, res: Response) {
 */
 export const updateTodo = async function(req: Request, res: Response) {
   await loadFromDisk();
-  res.status(404).json({ error: 'Not found' });
   await saveTodosToFile();
+  res.status(404).json({ error: 'Not found' });
 };
 
 /*
@@ -70,12 +66,8 @@ function saveTodosToFile() {
   persistToDisk(todos);
 }
 
-let loadedFromFile = false;
 async function loadFromDisk() {
-  if (!loadedFromFile) {
-    todos.splice(0, todos.length); // empty list
-    todos.push(...(await readFromDisk()));
-    id = Math.max(...todos.map(todo => id));
-    loadedFromFile = true;
-  }
+  todos.splice(0, todos.length); // empty list
+  todos.push(...(await readFromDisk()));
+  id = Math.max(...todos.map(todo => todo.id));
 }

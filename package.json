@@ -5,10 +5,12 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/todolist.ts",
+    "start:prod": "node dist/todolist.js",
     "test": "jest"
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.17.3",
     "express-winston": "^4.2.0",
     "winston": "^3.7.2"
