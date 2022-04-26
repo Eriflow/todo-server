@@ -43,7 +43,16 @@ export const findById = async function(req: Request, res: Response) {
 */
 export const addTodo = async function(req: Request, res: Response) {
   await loadFromDisk();
-  res.status(201).end();
+  todos.push(
+    {
+      id: id++,
+      description: 'Faire la vaisselle',
+      memo: '',
+      priority: 2,
+      updatedAt: Date.now(),
+    }
+  );
+  res.status(201).end(JSON.stringify(todos[todos.length -1]));
   await saveTodosToFile();
 };
 
@@ -75,7 +84,7 @@ async function loadFromDisk() {
   if (!loadedFromFile) {
     todos.splice(0, todos.length); // empty list
     todos.push(...(await readFromDisk()));
-    id = Math.max(...todos.map(todo => id));
+    id = Math.max(...todos.map(todo => todo.id));
     loadedFromFile = true;
   }
 }
