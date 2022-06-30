@@ -4,21 +4,28 @@ import { Todo } from '../models/todo.model';
 const todos: Todo[] = [
   {
     id: 1,
-    description: 'Faire les courses',
-    memo: 'Pomme, poire, lessive',
-    priority: 1,
+    title: 'Faire les courses',
+    description: 'Pomme, poire, lessive',
+    priority: 2,
     updatedAt: Date.now(),
   },
   {
     id: 2,
-    description: 'Envoyer le courrier',
-    memo: 'Urgent',
-    priority: 2,
+    title: 'Envoyer le courrier',
+    description: 'Urgent',
+    priority: 3,
+    updatedAt: Date.now(),
+  },
+  {
+    id: 3,
+    title: 'Lire le journal',
+    description: 'Smashing magazine, sidebar.io, Hacker News',
+    priority: 1,
     updatedAt: Date.now(),
   },
 ];
 
-let id = 3;
+let id = 4;
 
 /*
 * GET todos listing.
