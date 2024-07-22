@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { Todo } from '../models/todo.model';
+
+import { Todo } from '../models/todo.model.js';
 
 const todos: Todo[] = [
   {

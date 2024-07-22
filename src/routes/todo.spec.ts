@@ -1,4 +1,4 @@
-import { findAll } from './todo';
+import { findAll } from './todo.js';
 
 describe('Todo', () => {
   it('Can make sure findAll is returning data', () => {

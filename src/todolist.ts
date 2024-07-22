@@ -3,7 +3,7 @@ import express from 'express';
 import expressWinston from 'express-winston';
 import winston from 'winston';
 
-import * as todo from './routes/todo';
+import * as todo from './routes/todo.js';
 
 const app = express();
 

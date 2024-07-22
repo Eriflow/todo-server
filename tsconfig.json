@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "lib": ["ESNext"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["src/todolist.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "file": [".src/todolist.ts"]
 }
